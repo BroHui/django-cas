@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cas_server',
+    'djangocas',
+    'mama_cas',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,12 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = False
+
+MAMA_CAS_SERVICES = [
+    {
+        'SERVICE': 'http://127.0.0.1:3000',
+        'CALLBACKS': [
+            'mama_cas.callbacks.user_model_attributes',
+        ],
+    },
+]

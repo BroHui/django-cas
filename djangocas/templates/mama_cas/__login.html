@@ -1,0 +1,68 @@
+{% extends "mama_cas/__base.html" %}
+{% load i18n %}
+
+{% block styles %}
+  <!-- Custom styles for this template -->
+  <link href="/static/cas_server/signin.css" rel="stylesheet">
+  <link href="/static/bootstrap-4.6/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#563d7c">
+{% endblock %}
+
+{% block content %}
+  <div class="container login__container my-5">
+    <div class="row login__row">
+      <div class="col-md-6 d-flex">
+        <img class="login__imagek align-self-center"
+             src="/static/images/Businessman_Happy_Accepting_News.jpg"
+             width="100%" alt=""/>
+      </div>
+      <div class="col-md-5 d-flex">
+        <div class="align-self-center card login__card shadow-sm w-100">
+          <div class="card-body">
+            <form method="POST">
+              {% csrf_token %}
+              <h2 class="text-muted text-center">集团CAS登录系统</h2>
+              {% include "mama_cas/_messages.html" %}
+
+              <div>
+                <div class="form-group">
+                  <label for="id_username">用户名</label>
+                  <input type="text" id="id_username" name="username" class="form-control form-control-lg"/>
+                </div>
+                <div class="form-group">
+                  <label for="id_password">密码</label>
+                  <input type="password" id="id_password" name="password" class="form-control form-control-lg"/>
+                </div>
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input custom-control"
+                         id="remember-me" name="remember-me"/>
+                  <label class="custom-control-label" for="remember-me">记住我</label>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block my-3">{% trans "Login" %}</button>
+
+                  <div class="d-flex justify-content-between">
+                    <a href="#!">忘记密码?</a>
+                    {#                                        <span> <a href="#">Create account</a></span>#}
+                  </div>
+                  <div class="dropdown-divider my-4"></div>
+                  <div class="text-center w-100">
+                    <small>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block javascript %}
+  <!-- javascript -->
+  <script src="/static/jquery.min.js"></script>
+  <script src="/static/bootstrap-4.6/js/bootstrap.min.js"></script>
+{% endblock %}
